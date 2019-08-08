@@ -15,6 +15,12 @@ nmap <leader>gd :Gdiff<CR>
 " Checks out file currently editing (trash curr edit file & add back file)
 nmap <leader>gc  :execute ":Git checkout %"<CR>
 
+" For Galooshi:   
+"                 <Leader>j Imports module for variable under cursor.
+"                 <Leader>i Imports any missing modules and removes any unused.
+"                 <Leader>g Goes to module of variable under cursor.
+" Additionally:
+"                 <Shift>k Looks up manual pages of item under cursor.
 
 " Python
 set nocompatible              " required
@@ -24,13 +30,10 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" Let Vundle manage Vundle, required
+" Let Vundle manage Vundle, not a bad idea eh?
 Plugin 'gmarik/Vundle.vim'
 
-" Add all your plugins here (note older versions of Vundle
+" Add plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 " ...
 Plugin 'tmhedberg/SimpylFold'
@@ -44,15 +47,15 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'junegunn/seoul256.vim'
-
 " Angular
 Plugin 'burnettk/vim-angular'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'Galooshi/vim-import-js'
 "Plugin 'matthewsimo/angular-vim-snippets'
 "Plugin 'claco/jasmine.vim'
-Plugin 'scrooloose/syntastic.git'
 " TypeScript
 Plugin 'quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
@@ -62,7 +65,7 @@ Plugin 'jason0x43/vim-js-indent'
 Plugin 'othree/html5.vim'
 
 " ...
-" All of your Plugins must be added before the following line
+" All Plugins must be added before the following line
 call vundle#end()           " required
 filetype plugin indent on   " required
 
@@ -96,6 +99,7 @@ highlight BadWhitespace ctermbg=red guibg=red
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
+" TODO: look into this for java?
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Make sure vim knows to use UTF8 when working with Python
@@ -109,8 +113,6 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 syntax on
 
-
-
 " NERDTree open with shortcut
 map <C-n> :NERDTreeToggle<CR>
 " Ignore .pyc files in NERDTree
@@ -119,6 +121,50 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 let g:NERDTreeWinPos = "right"
 " Change default width to 29 columns
 let g:NERDTreeWinSize=29
+
+" Cuz anybody who isn't full stack dev has a weak mind.
+" ALSO peep the plugin 'ftypes' some day.
+au BufNewFile,BufRead *.java,*.jss,*.c,*.css
+    \ syntax on |
+    \ set expandtab |
+    \ set shiftwidth=4 |
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set cindent
+
+au BufNewFile,BufRead *.html,*.ts
+    \ syntax on |
+    \ set expandtab |
+    \ set shiftwidth=2 |
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+
+" JavaScript
+" Enable syntax highlighting for JSDocs.
+let g:javascript_plugin_jsdoc = 1 
+" Enable some addditional syntax highlighting for NGDocs.
+let g:javascript_plugin_ngdoc = 1
+" Enable syntax highlighting for Flow.
+let g:javascript_plugin_flow = 1
+" Code folding for JavaScript.
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+
+" All the old stuff.
+:set hls
+:set incsearch
+:set number
+":color desert
+
+
 
 " seoul256 Colorscheme shrimp... someday ill get er workin how I want.
 "colorscheme seoul256
@@ -145,48 +191,4 @@ let g:NERDTreeWinSize=29
 "   execfile(activate_this, dict(__file__=activate_this))
 " EOF
 
-
-" All the old stuff.
-:set hls
-:set incsearch
-:set number
-":color desert
-
-" Cuz anybody who isn't full stack dev has a weak mind.
-" ALSO peep the plugin 'ftypes' some day.
-au BufNewFile,BufRead *.java,*.jss,*.c,*.css
-    \ syntax on |
-    \ set expandtab |
-    \ set shiftwidth=4 |
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set cindent
-
-au BufNewFile,BufRead *.html
-    \ syntax on |
-    \ set expandtab |
-    \ set shiftwidth=2 |
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-
-
-
-" JavaScript
-" Enable syntax highlighting for JSDocs.
-let g:javascript_plugin_jsdoc = 1 
-" Enable some addditional syntax highlighting for NGDocs.
-let g:javascript_plugin_ngdoc = 1
-" Enable syntax highlighting for Flow.
-let g:javascript_plugin_flow = 1
-" Code folding for JavaScript.
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
 
