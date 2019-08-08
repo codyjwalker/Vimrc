@@ -1,3 +1,4 @@
+" TODO: Figure out how to disable closing <>
 " GitHub for vim-fugitive needs pathogen.vim:
 execute pathogen#infect()
 
@@ -63,6 +64,7 @@ Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'jason0x43/vim-js-indent'
 " html
 Plugin 'othree/html5.vim'
+Plugin 'alvan/vim-closetag'
 
 " ...
 " All Plugins must be added before the following line
