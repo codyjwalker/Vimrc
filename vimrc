@@ -16,7 +16,7 @@ nmap <leader>gd :Gdiff<CR>
 nmap <leader>gc  :execute ":Git checkout %"<CR>
 
 
-" Python Bullshit
+" Python
 set nocompatible              " required
 filetype off                  " required
 
@@ -36,7 +36,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -44,6 +44,21 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'junegunn/seoul256.vim'
+
+" Angular
+Plugin 'burnettk/vim-angular'
+" JavaScript
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'matthewsimo/angular-vim-snippets'
+"Plugin 'claco/jasmine.vim'
+Plugin 'scrooloose/syntastic.git'
+" TypeScript
+Plugin 'quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'jason0x43/vim-js-indent'
+
 " ...
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
@@ -147,4 +162,18 @@ au BufNewFile,BufRead *.java,*.jss,*.c,*.css
     \ set expandtab |
     \ set autoindent |
     \ set cindent
+
+
+" JavaScript
+" Enable syntax highlighting for JSDocs.
+let g:javascript_plugin_jsdoc = 1 
+" Enable some addditional syntax highlighting for NGDocs.
+let g:javascript_plugin_ngdoc = 1
+" Enable syntax highlighting for Flow.
+let g:javascript_plugin_flow = 1
+" Code folding for JavaScript.
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
 
