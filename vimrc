@@ -58,6 +58,8 @@ Plugin 'quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'jason0x43/vim-js-indent'
+" html
+Plugin 'othree/html5.vim'
 
 " ...
 " All of your Plugins must be added before the following line
@@ -133,7 +135,7 @@ let g:NERDTreeWinSize=29
 
 
 " Python with virtualenv support
-" IDK WHY THIS SHIT BROKEN BUT I THINK ITS SUM PYTHON 2 VS 3 BUUULLLLSHIET
+" IDK WHY THIS IS BROKEN BUT I THINK ITS SUM PYTHON 2 VS 3 CRRRREP!
 " py << EOF
 " import os
 " import sys
@@ -144,7 +146,7 @@ let g:NERDTreeWinSize=29
 " EOF
 
 
-" All the old shit
+" All the old stuff.
 :set hls
 :set incsearch
 :set number
@@ -162,6 +164,17 @@ au BufNewFile,BufRead *.java,*.jss,*.c,*.css
     \ set expandtab |
     \ set autoindent |
     \ set cindent
+
+au BufNewFile,BufRead *.html
+    \ syntax on |
+    \ set expandtab |
+    \ set shiftwidth=2 |
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+
 
 
 " JavaScript
