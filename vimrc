@@ -64,7 +64,7 @@ Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'jason0x43/vim-js-indent'
 " html
 Plugin 'othree/html5.vim'
-Plugin 'alvan/vim-closetag'
+"Plugin 'alvan/vim-closetag'
 
 " ...
 " All Plugins must be added before the following line
@@ -146,6 +146,7 @@ au BufNewFile,BufRead *.html,*.ts
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
+    \ set cindent
 
 " JavaScript
 " Enable syntax highlighting for JSDocs.
