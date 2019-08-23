@@ -15,6 +15,8 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
 " Checks out file currently editing (trash curr edit file & add back file)
 nmap <leader>gc  :execute ":Git checkout %"<CR>
+" Runs the Tsuquyomi Quick Fix on current line.
+nmap <leader>j :TsuQuickFix<CR>
 
 " For Galooshi:   
 "                 <Leader>j Imports module for variable under cursor.
@@ -65,6 +67,7 @@ Plugin 'jason0x43/vim-js-indent'
 " html
 Plugin 'othree/html5.vim'
 "Plugin 'alvan/vim-closetag'
+Plugin 'mattn/emmet-vim'
 
 " ...
 " All Plugins must be added before the following line
